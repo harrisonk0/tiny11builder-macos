@@ -5,10 +5,16 @@ on:
     paths:
       - 'macos/**'
       - '.github/workflows/tests.yml'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - '.gitignore'
   pull_request:
     paths:
       - 'macos/**'
       - '.github/workflows/tests.yml'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - '.gitignore'
 
 permissions:
   contents: read

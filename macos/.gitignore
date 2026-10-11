@@ -9,3 +9,7 @@ macos/tools/__pycache__/
 *.esd
 *.swm
 *.partial
+work/
+build-output/
+*.swm
+*.partial
