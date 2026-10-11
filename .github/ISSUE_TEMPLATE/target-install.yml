@@ -1,0 +1,36 @@
+name: Target PC test report
+description: Report results from testing an installer on a real Windows PC
+title: "Target test: "
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Do not upload Windows ISOs, WIM files, product keys, or unredacted logs.
+        Share only information you are comfortable making public.
+  - type: input
+    id: windows-build
+    attributes:
+      label: Windows build and edition
+      description: Include the edition and build number shown by winver.
+    validations:
+      required: true
+  - type: dropdown
+    id: install-result
+    attributes:
+      label: How far did setup get?
+      options:
+        - USB did not appear in firmware
+        - USB booted but setup did not start
+        - Setup started but installation failed
+        - Windows installed and reached the desktop
+        - Deferred servicing completed
+        - Windows Update installed an update
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Error message and relevant checks
+      description: Include results from servicing-state.json and DISM /ScanHealth, with usernames and local paths removed.
+    validations:
+      required: false

@@ -1,0 +1,11 @@
+macos/.deps/
+macos/real-test/
+macos/__pycache__/
+macos/tests/__pycache__/
+macos/tools/__pycache__/
+*.py[cod]
+*.iso
+*.wim
+*.esd
+*.swm
+*.partial
