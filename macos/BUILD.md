@@ -14,11 +14,12 @@ This is a hybrid implementation. It is **not an independently implemented native
 Keep large source/build files downloaded. macOS offloaded some multi-GB files in this Documents workspace and subsequent reads timed out. If Finder shows cloud-only content, choose Download Now/Keep Downloaded first. Prefer a non-synced local location for heavy scratch files; the CLI accepts an explicit scratch path. Offloaded source ISOs are rejected before large reads begin.
 
 ```sh
+cd macos
 brew install wimlib hivex cdrtools xorriso autoconf automake libtool pkgconf
 python3 tools/build_wimlib.py --source .deps/wimlib-source --prefix .deps/wimlib
 ```
 
-Run these commands from the project directory. The wimlib helper checks a pinned source revision (`cd5e231c348c255ae5088873b5a66ee0eb96fa07`) and adds a small metadata-preservation patch. It builds a private ARM64 executable and does not replace Homebrew's installation. The patch retains the replaced hive's Windows security descriptor, file attributes, timestamps, extra metadata, and short name; it rejects hard-linked, multi-stream, encrypted, and reparse files. The builder compares the original and final WIM metadata and refuses to package the image if it differs.
+Run these commands from the cloned repository root; the first changes into `macos/`. The wimlib helper checks a pinned source revision (`cd5e231c348c255ae5088873b5a66ee0eb96fa07`) and adds a small metadata-preservation patch. It builds a private ARM64 executable and does not replace Homebrew's installation. The patch retains the replaced hive's Windows security descriptor, file attributes, timestamps, extra metadata, and short name; it rejects hard-linked, multi-stream, encrypted, and reparse files. The builder compares the original and final WIM metadata and refuses to package the image if it differs.
 
 Upstream choices are read from the audited script as data; the PowerShell builder itself is never executed on the Mac. A SHA-256 check rejects unreviewed changes to that script.
 
