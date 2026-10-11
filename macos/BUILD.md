@@ -11,11 +11,13 @@ This is a hybrid implementation. It is **not an independently implemented native
 - At least 20 GiB of free disk space for staging, compression, and the resulting ISO; allow more for larger media.
 - A legitimately obtained Windows 11 **x64** ISO and a Windows license for the selected edition. ARM64 installation media cannot be used for an Intel x64 target.
 
+For the guided one-run path, double-click [`Build-Tiny11.command`](Build-Tiny11.command). It opens native dialogs for the source ISO, Windows edition, and output folder, then builds the ISO and split USB files. If a Homebrew package is missing, the wizard offers to install it. It doesn't format or write to a physical USB drive.
+
 Keep large source/build files downloaded. macOS offloaded some multi-GB files in this Documents workspace and subsequent reads timed out. If Finder shows cloud-only content, choose Download Now/Keep Downloaded first. Prefer a non-synced local location for heavy scratch files; the CLI accepts an explicit scratch path. Offloaded source ISOs are rejected before large reads begin.
 
 ```sh
 cd macos
-brew install wimlib hivex cdrtools xorriso autoconf automake libtool pkgconf
+brew install python wimlib hivex cdrtools xorriso autoconf automake libtool pkgconf coreutils
 python3 tools/build_wimlib.py --source .deps/wimlib-source --prefix .deps/wimlib
 ```
 

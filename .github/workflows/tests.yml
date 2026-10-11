@@ -32,6 +32,8 @@ jobs:
         run: brew install hivex
       - name: Check Python syntax
         run: python -m py_compile macos/*.py macos/tools/*.py
+      - name: Check Apple launcher scripts
+        run: zsh -n macos/Build-Tiny11.command && osacompile -o "$RUNNER_TEMP/Tiny11Dialogs.scpt" macos/Tiny11Dialogs.applescript
       - name: Check unit tests
         working-directory: macos
         run: python -m unittest discover -s tests -v
